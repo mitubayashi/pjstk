@@ -1,0 +1,64 @@
+
+<!DOCTYPE html PUBLIC "-//W3C/DTD HTML 4.01"><html><head><title>�o�ދΓ���</title><meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" type="text/css" href="./list_css.css"><link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+			<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/redmond/jquery-ui.css" >
+			<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.css">
+			<link rel="stylesheet" href="./jquery.datetimepicker.css">
+			<link rel="stylesheet" href="./jquery.timepicker.min.css">
+			<link rel="stylesheet" href="./MonthPicker.css"><link rel="stylesheet" type="text/css" href="./list_css.css"><!---��jQuery---!>
+			<script src="./jquery.js"></script>
+			<script src="./jquery.datetimepicker.full.min.js"></script>
+			<script src="./jquery.timepicker.min.js"></script>
+			<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+			<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js"></script>
+			<!---��jQuery---!>
+			<script src="./MonthPicker.js"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.js"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/i18n/jquery.spectrum-ja.min.js"></script>
+			<script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
+			<script src="./inputcheck.js"></script>
+			<script src="./generate_date.js"></script>
+			<script src="./pulldown.js"></script>
+			<script src="./button_size.js"></script>
+			<script src="./jquery.corner.js"></script>
+			<script src="./list_jQuery.js"></script>
+			<script src="./tabscript.js"></script>
+			<script src="./hm_hinmoku.js"></script><script language="JavaScript"><!--
+			//history.forward();
+			var isCancel = false;
+			$(function()
+			{
+				$(".button").corner();
+				$(".free").corner();
+				set_button_size();
+				
+				
+				$("input").blur(function()
+				{
+					var idx = this.name.lastIndexOf( "_0_" );
+					if(idx !== -1)
+					{
+						var poststr = this.name.substr(idx);
+						calculateKingaku( poststr );
+					}
+				});
+				
+				makeDatepicker();
+			});
+			--></script></head><body><div class="titlebox" id="print"><div class="main_title"><h1>�}�[�L�����[�\�t�g</h1></div><div class="mlogo"><img src="./image/mlogo.gif" class="m_logo"></div></div><div class="pkg_contents" id="print">
+				<div class="main_menu">   <div class="contents">
+  <ul class="nav">
+  <li><a href="main.php?TOP_5">TOP</a></li>
+<li><a href="main.php?SHUTAIKIN_1_button=%8Fo%91%DE%8B%CE%93%FC%97%CD">�o�ދΓ���</a></li>
+<li><a href="main.php?WORKINFO_2_button=%8B%CE%96%B1%8F%F3%8B%B5">�Ζ���</a></li>
+<li><a href="main.php?SOUSALIST_2_button=%91%80%8D%EC%97%9A%97%F0">���엚��</a></li>
+  <li><a href="login.php">���O�A�E�g</a></li>
+   <!--nav--></ul>
+  </div></div></div><div class = "center"><a class = "title_edit">�o�ދΓ���</a></div><br><form name ="insert" action="main.php" method="get" enctype="multipart/form-data" 
+				onsubmit = "return check('','','');"><div class = "edit_table"><table name ='forminsert' id ='insert'><td class = 'space'></td><td class ='one'><a class = 'itemname'>���t</a></td><td class = 'two'><input type ='text' name = 'workdate' id = 'workdate' class = 'workdate' value = '2019/05/10'  ></td></tr><td class = 'space'></td><td class ='one'><a class = 'itemname'>����</a></td><td class = 'two'><input type ='text' name = 'worktime' id = 'worktime' class = 'worktime' value = '09:48'  ><input type ='button' name = 'timebutton' id = 'timebutton' class='timebutton' value ='...'  ></td></tr><td class = "space"></td><td class ="one"></td><td class = "two"><input type ="submit" name = "Comp" id = "form_stkSHUTIME_0" class="shukkin" value = "�o��"  ></table></div></form></body>
+                                <script language="JavaScript"><!--
+			
+			function makeDatepicker()
+			{$('#workdate').datepicker();$('#workdate').datepicker('option', 'showOn', 'button');$('#worktime').timepicker();$('#worktime').timepicker('option', 'step', '15');$('#worktime').timepicker('option', 'timeFormat', 'H:i');$('#timebutton').on('click', function(){
+		$('#worktime').timepicker('show');
+	});}
+				--></script></html>

@@ -1,0 +1,11 @@
+﻿[27-Jun-2014 16:47:55 Asia/Tokyo] You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'LEFT JOIN genbainfo USING(4CODE) WHERE genbainfo.GENBASTATUS = '0' GROUP BY 4COD' at line 1
+[27-Jun-2014 16:47:55 Asia/Tokyo] PHP Fatal error:  Call to a member function fetch_array() on a non-object in C:\Program Files\Apache Software Foundation\Apache2.2\htdocs\kani\f_DB.php on line 2497
+[03-Jul-2014 13:35:43 Asia/Tokyo] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in C:\Program Files\Apache Software Foundation\Apache2.2\htdocs\kani\f_Form.php on line 1714
+[03-Jul-2014 13:36:13 Asia/Tokyo] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in C:\Program Files\Apache Software Foundation\Apache2.2\htdocs\kani\f_Form.php on line 1708
+[03-Jul-2014 13:37:39 Asia/Tokyo] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in C:\Program Files\Apache Software Foundation\Apache2.2\htdocs\kani\f_Form.php on line 1708
+[11-Aug-2014 15:46:03 Asia/Tokyo] Unknown column 'genbainfo.GENBASTATUS' in 'where clause'
+[11-Aug-2014 15:46:03 Asia/Tokyo] PHP Fatal error:  Call to a member function fetch_array() on a non-object in C:\Program Files\Apache Software Foundation\Apache2.2\htdocs\kani\f_DB.php on line 2510
+[11-Aug-2014 15:47:00 Asia/Tokyo] Unknown column 'genbainfo.GENBASTATUS' in 'where clause'
+[11-Aug-2014 15:47:00 Asia/Tokyo] PHP Fatal error:  Call to a member function fetch_array() on a non-object in C:\Program Files\Apache Software Foundation\Apache2.2\htdocs\kani\f_DB.php on line 2510
+[11-Aug-2014 15:47:33 Asia/Tokyo] Unknown column 'genbainfo.GENBASTATUS' in 'where clause'
+[11-Aug-2014 15:47:33 Asia/Tokyo] PHP Fatal error:  Call to a member function fetch_array() on a non-object in C:\Program Files\Apache Software Foundation\Apache2.2\htdocs\kani\f_DB.php on line 2510
