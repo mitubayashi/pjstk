@@ -906,8 +906,18 @@ class EditPage extends InsertPage
 			$header_array = $this->makeList_itemV2('', $this->prContainer->pbInputContent);
 			if(isset($header_array))
 			{
-				$header = $header_array[0];
-				$makeDatepicker .=  $header_array[1];
+                if(isset($header_array[0]))
+                {
+                    $header = $header_array[0];
+                }
+				else
+                {
+                    $header = NULL;
+                }
+                if(isset($header_array[1]))
+                {
+                    $makeDatepicker .=  $header_array[1];
+                }				
 			}
 			//--↑明細作成--//
 			
@@ -1059,9 +1069,18 @@ class EditCheckPage extends EditPage
 			//--↓明細作成--//
 			$header_array = $this->makeList_itemV2('', $this->prContainer->pbInputContent);
 			if(isset($header_array))
-			{	
-				$header = $header_array[0];
-				$makeDatepicker .=  $header_array[1];
+			{
+                if(isset($header_array[0])){
+                    $header = $header_array[0];
+                }
+				else
+                {
+                    $header = NULL;
+                }
+                if(isset($header_array[1]))
+                {
+                    $makeDatepicker .=  $header_array[1];
+                }				
 			}
 			//--↑明細作成--//
 			$checkList = $_SESSION['check_column'];
@@ -1282,8 +1301,17 @@ class DeletePage extends EditCheckPage
 			$header_array = $this->makeList_itemV2('', $this->prContainer->pbInputContent);
 			if(isset($header_array))
 			{	
-				$header = $header_array[0];
-				$makeDatepicker .=  $header_array[1];
+                if(isset($header_array[0]))
+                {
+                    $header = $header_array[0];
+                }
+				else
+                {
+                    $header = NULL;
+                }
+                if(isset($header_array[1])){
+                    $makeDatepicker .=  $header_array[1];
+                }
 			}
 			//--↑明細作成--//
 			
@@ -1299,8 +1327,10 @@ class DeletePage extends EditCheckPage
 			$html .= $this->makeHiddenParam($this->prContainer->pbListId,$this->prContainer->pbStep);
 			$html .=$header;
 			$html .= '</div>';
-			$html .= '<div class = "pad">
+			$html .= '<div class = "pad" style="display:inline-flex">
 				<input type="submit" name = "delete" value = "削除" class="free">
+                </form>
+                <form action="main.php?WORKINFO_2_button=勤務状況&SHAID=25" method="post">
 				<input type="submit" name = "cancel" value = "一覧に戻る" class="free" onClick ="isCancel = true;">';
 			$html .='</div>';
 			$html .= '</form>';

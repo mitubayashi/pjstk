@@ -2135,6 +2135,8 @@ class BasePage extends BaseObject
 		$html .='<div class ="center"><a class ="error">他の端末ですでにデータが削除されているため,編集できません。</a></div>';
 		$html .='<form action="main.php" method="post" >';
 		$html .='<div class = "center">';
+        $html .='</form>';
+        $html .='<form action="main.php?WORKINFO_2_button=勤務状況&SHAID=25" method="post">';
 		$html .='<input type="submit" name = "cancel" value = "一覧に戻る" class = "free">';
 		$html .='</div></form>';
 

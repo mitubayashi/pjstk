@@ -1888,7 +1888,8 @@ function Sousarireki( $filename, $id, $sql, &$con,$post ,$content)
 
 	$rireki_file_id = 'SOUSALIST_1';
 	$date = date('Y/m/d');
-	$user = mb_convert_encoding($_SESSION['HYOJIMEI'], "UTF-8","SJIS");
+	//$user = mb_convert_encoding($_SESSION['HYOJIMEI'], "UTF-8","SJIS");
+    $user = $_SESSION['HYOJIMEI'];
 	$sousa = 'ログイン';
 	if( $id === STEP_INSERT )
 	{

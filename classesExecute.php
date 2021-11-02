@@ -136,7 +136,8 @@ class BaseLogicExecuter extends BaseObject
 	   $item = $item_ini['data']['column'];
 	   $item_array = explode(",", $item);
 	   $key_array = $_SESSION;
-	   $keep = "";
+	   //$keep = "";
+       $keep = array();
 	   foreach ($key_array as $key => $value)
 	   {
 			if(count($keep) == count($item_array))

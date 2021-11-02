@@ -85,8 +85,9 @@ class PageContainer
 		//ページfilename
 		$this->pbFileName = $filename;
 		//form_iniの設定値(ページの設定値)
-		$this->pbPageSetting = $this->pbFormIni[$filename];
-
+        if(isset($this->pbFormIni[$filename])){
+            $this->pbPageSetting = $this->pbFormIni[$filename];
+        }
 		//列設定
 		if(isset($this->pbPageSetting['page_columns']))
 		{
