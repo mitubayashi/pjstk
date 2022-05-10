@@ -430,6 +430,12 @@ class ListPage extends BasePage
 	 */
 	function makCsv()
 	{
+        //デフォルトで検索条件を設定
+		if(isset($this->prContainer->pbListId))
+		{
+			$this->prContainer->pbInputContent['form_shaSHAHYOJIMEI_0'] = $_SESSION["HYOJIMEI"];
+		}
+        
 		//SQL文をリストページと同じ手順で構築
 		$sql = joinSelectSQL($this->prContainer->pbInputContent, $this->prMainTable, $this->prContainer->pbFileName, $this->prContainer->pbFormIni);
 		$sql = SQLsetOrderby($this->prContainer->pbInputContent, $this->prContainer->pbFileName, $sql);
@@ -438,6 +444,15 @@ class ListPage extends BasePage
 		$columns_array = explode(',',$this->prContainer->pbPageSetting['page_columns']);
 		$labels_array = explode(',',$this->prContainer->pbPageSetting['column_labels']);
 
+        //勤務状況のページの場合
+        if($_SESSION["filename"] == "WORKINFO_2")
+        {
+            $columns = "SHAHYOJIMEI,SHUDATE,SHUTIME,TAIDATE,TAITIME,AUTOSHUDATE,AUTOSHUTIME,AUTOTAIDATE,AUTOTAITIME,KINTIME,ZANTIME";
+            $columns_array = explode(',',$columns);
+            $labels = "社員名,出勤日付,出勤時間,退勤日付,退勤時間,自動出勤日付,自動出勤時間,自動退勤日付,自動退勤時間,勤務時間,残業時間";            
+            $labels_array = explode(',',$labels);
+        }
+        
 		//csv
 		$csv_str = '';
 
@@ -474,10 +489,19 @@ class ListPage extends BasePage
 				if($i !== 0){
 					$csv_str .= ',';	//カンマを付け足す
 				}
-				//列名
-				$field_name = $this->prContainer->pbParamSetting[$columns_array[$i]]['column'];
-				//値
-				$csv_str .= $result_row[$field_name];
+                
+                if($_SESSION["filename"] == "WORKINFO_2")
+                {
+                    //列名
+                    $field_name = $columns_array[$i];
+                }
+                else
+                {
+                    //列名
+                    $field_name = $this->prContainer->pbParamSetting[$columns_array[$i]]['column'];
+                }
+                //値
+                $csv_str .= $result_row[$field_name];
 			}
 			$csv_str .= "\r\n";	//改行
 		}

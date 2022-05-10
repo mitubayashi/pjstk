@@ -1246,8 +1246,17 @@ function getSelectSQL( $params, $tablenum ){
 		{
 			break;
 		}
-		//読んだものをつなげる
-		$tempsql .= $SQL_ini[$tablenum][$key];
+        //勤務状況をCSV出力する場合は日付と時間を分割する
+        if($tablenum == "WORKINFO_2" && $key == "SQL_01" && basename($_SERVER['SCRIPT_NAME']) == "csv_out.php")
+        {
+            //読んだものをつなげる
+            $tempsql .= $SQL_ini[$tablenum]["CSV_SQL"];
+        }
+        else 
+        {
+            //読んだものをつなげる
+            $tempsql .= $SQL_ini[$tablenum][$key];            
+        }
 	}
 	
 	$sql[0] = $tempsql;

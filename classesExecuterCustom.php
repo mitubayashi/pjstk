@@ -21,20 +21,48 @@ class ShutaikinExecuteSQL extends BaseLogicExecuter
 	{
 		$step = $this->prContainer->pbStep;
 		$filename = $this->prContainer->pbFileName;
-		//DB接続、トランザクション開始
-		$con = beginTransaction();
-		if($step == STEP_INSERT)//データ登録
-		{
-			$result = insert_stk($this->prContainer->pbInputContent);
-		}
-		else if($step == STEP_EDIT)//データ編集
-		{
-			$result = update_stk($this->prContainer->pbInputContent);
-		}
-		
-		//トランザクションコミットまたはロールバック
-		commitTransaction($result,$con);
+        
+        //多重登録チェック↓
+        $con = dbconect();
+        $judge = false;
+        $shaid = $_SESSION['userid'];//ログインした社員コード
+        $sql = "select * from timework where STKID = (select max(STKID) from timework where SHAID = $shaid)";
+        $result = $con->query($sql);
+        while($result_row = $result->fetch_array(MYSQLI_ASSOC))
+        {
+            $taitime = $result_row['TAITIME'];
+        }
+        
+        if(isset($taitime) && $step == STEP_INSERT)
+        {
+            $judge = true;
+        }
+        elseif(!isset ($taitime) && $step == STEP_EDIT) 
+        {
+            $judge = true;
+        }
+        //多重登録チェック↑
+        
+        if($judge)
+        {
+            //DB接続、トランザクション開始
+            $con = beginTransaction();
+            if($step == STEP_INSERT)//データ登録
+            {
+                $result = insert_stk($this->prContainer->pbInputContent);
+            }
+            else if($step == STEP_EDIT)//データ編集
+            {
+                $result = update_stk($this->prContainer->pbInputContent);
+            }
 
+            //トランザクションコミットまたはロールバック
+            commitTransaction($result,$con);
+        }
+        else
+        {
+            $_SESSION["syutaierror"] = $step;
+        }
 		$this->PageJump($filename, $_SESSION['userid'], 1, "", "");
 	}
 }

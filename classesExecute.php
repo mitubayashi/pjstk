@@ -155,12 +155,23 @@ class BaseLogicExecuter extends BaseObject
 	   }
 	   
 	   //SESSION初期化
+       //出退勤多重登録エラー
+       if(isset($_SESSION['syutaierror']))
+       {
+           $syutaierror = $_SESSION['syutaierror'];
+       }
 	   $_SESSION = array();
 	   $_SESSION = $keep;
 	   $_SESSION['filename'] = $filename;
 	   $_SESSION['step'] = $step;
 	   $_SESSION['list'] = array();
 	   $_SESSION['list']['id'] = $id;
+       
+        //出退勤多重登録エラー
+       if(isset($syutaierror))
+       {
+           $_SESSION['syutaierror'] = $syutaierror;
+       }
 	   $url = "";
 	   //見積の入力値
 	   if($Content != "")

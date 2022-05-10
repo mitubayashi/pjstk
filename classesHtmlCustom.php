@@ -29,7 +29,17 @@ class ShutaikinPage extends InsertPage
 		
 		//----↑入力項目作成----//
 		
-		$send = '<form name ="insert" action="main.php" method="get" enctype="multipart/form-data">';
+        //多重送信防止
+        if($_SESSION["filename"] == "SHUTAIKIN_1")
+        {
+            $onsubmit = 'onsubmit="this.onsubmit=function(){return false}"';
+        }
+        else
+        {
+            $onsubmit = "";
+        }
+        
+		$send = '<form name ="insert" action="main.php" method="get" enctype="multipart/form-data" '.$onsubmit.'>';
 		$this->prInitScript = $makeDatepicker;//メンバ変数に保存
 		$html = '<br>';
 		$html .= $send;
@@ -37,6 +47,22 @@ class ShutaikinPage extends InsertPage
 		$html .= $form;
 		$html .= '</div>';
 		
+        //他画面で操作されていた場合
+        if(isset($_SESSION['syutaierror']))
+        {
+            $step = $_SESSION['syutaierror'];
+            unset($_SESSION['syutaierror']);
+            if($step == STEP_INSERT)
+            {
+                $errormsg = "出勤済みです";
+            }
+            if($step == STEP_EDIT)
+            {
+                $errormsg = "退勤済みです";
+            }
+            $html .= "<script>alert('".$errormsg."');</script>";
+        }
+         
 		return $html;
 	}
 
